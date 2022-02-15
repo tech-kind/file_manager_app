@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="assets\1.png" />
+    <None Remove="assets\dropbox.png" />
+    <None Remove="assets\googledrive.png" />
+    <None Remove="assets\onedrive.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="assets\1.png" />
+    <Resource Include="assets\dropbox.png" />
+    <Resource Include="assets\googledrive.png" />
+    <Resource Include="assets\onedrive.png" />
+  </ItemGroup>
+
+</Project>

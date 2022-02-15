@@ -1,0 +1,340 @@
+﻿<Window
+    x:Class="FileManagerApp.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ccontrols="clr-namespace:FileManagerApp.CControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:FileManagerApp"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="1250"
+    Height="841"
+    Background="Transparent"
+    FontSize="15"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    WindowState="Normal"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style x:Key="MenuButtonStyle" TargetType="{x:Type ToggleButton}">
+                <Setter Property="Background" Value="WhiteSmoke" />
+                <Setter Property="Foreground" Value="Gray" />
+                <Setter Property="HorizontalContentAlignment" Value="Left" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="Height" Value="40" />
+                <Setter Property="Margin" Value="20,0,-1,0" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ToggleButton}">
+                            <Border
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="10,0,0,10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Path
+                                        Data="{TemplateBinding Tag}"
+                                        Fill="{TemplateBinding Foreground}"
+                                        Style="{StaticResource {x:Type Path}}" />
+                                    <ContentPresenter
+                                        Grid.Column="1"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        Content="{TemplateBinding Content}"
+                                        TextBlock.TextAlignment="Left" />
+                                </Grid>
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" Value="#E1E4E6" />
+                                    <Setter Property="Foreground" Value="Teal" />
+                                    <Setter Property="FontWeight" Value="SemiBold" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Border Background="WhiteSmoke" CornerRadius="10">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+
+                <!--  left panel  -->
+                <ColumnDefinition Width="250" />
+
+                <!--  main content  -->
+                <ColumnDefinition />
+
+                <!--  right panel  -->
+                <ColumnDefinition Width="250" />
+            </Grid.ColumnDefinitions>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="100" />
+                </Grid.RowDefinitions>
+
+                <!--  logo  -->
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="30"
+                    Text="File MG" />
+
+                <Separator
+                    Width="200"
+                    VerticalAlignment="Bottom"
+                    Background="LightGray" />
+
+                <!--  profile button  -->
+                <StackPanel
+                    Grid.Row="1"
+                    Width="200"
+                    VerticalAlignment="Center">
+                    <Button Content="Taro Tanaka">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Height" Value="50" />
+                                <Setter Property="Background" Value="LightGray" />
+                                <Setter Property="Foreground" Value="Gray" />
+                                <Setter Property="FontWeight" Value="SemiBold" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border
+                                                Background="{TemplateBinding Background}"
+                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                CornerRadius="25">
+
+                                                <Grid>
+                                                    <Ellipse
+                                                        Width="45"
+                                                        Height="45"
+                                                        Margin="2,0"
+                                                        HorizontalAlignment="Left"
+                                                        Stretch="UniformToFill"
+                                                        Stroke="White"
+                                                        StrokeThickness="2">
+                                                        <Ellipse.Fill>
+                                                            <ImageBrush ImageSource="/assets/1.png" />
+                                                        </Ellipse.Fill>
+                                                    </Ellipse>
+
+                                                    <ContentPresenter
+                                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                        Content="{TemplateBinding Content}" />
+                                                </Grid>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Grid
+                        Width="70"
+                        Margin="0,10"
+                        HorizontalAlignment="Left">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Foreground="Gray"
+                            Text="Logout" />
+                        <Path
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Data="{StaticResource right}" />
+                    </Grid>
+                </StackPanel>
+
+                <Separator
+                    Grid.Row="1"
+                    Width="200"
+                    VerticalAlignment="Bottom"
+                    Background="LightGray" />
+
+                <!--  menu  -->
+                <StackPanel Grid.Row="2" Margin="0,10">
+                    <RadioButton
+                        Content="Home"
+                        GroupName="Manu"
+                        IsChecked="True"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Tag="{StaticResource home}" />
+                    <RadioButton
+                        Content="Shared Files"
+                        GroupName="Manu"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Tag="{StaticResource sharedfolders}" />
+                    <RadioButton
+                        Content="Starred"
+                        GroupName="Manu"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Tag="{StaticResource starred}" />
+                    <RadioButton
+                        Content="statistics"
+                        GroupName="Manu"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Tag="{StaticResource statistics}" />
+                    <RadioButton
+                        Content="Setting"
+                        GroupName="Manu"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Tag="{StaticResource settings}" />
+                    <RadioButton
+                        Content="Support"
+                        GroupName="Manu"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Tag="{StaticResource support}" />
+                </StackPanel>
+
+                <Grid Grid.Row="4" Width="200">
+                    <Rectangle
+                        RadiusX="10"
+                        RadiusY="10"
+                        Stroke="Silver"
+                        StrokeDashArray="5"
+                        StrokeThickness="1" />
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Path Data="{StaticResource documentfile}" Style="{StaticResource {x:Type Path}}" />
+                        <TextBlock
+                            Margin="0,5"
+                            Foreground="Gray"
+                            Text="Drop File" />
+                    </StackPanel>
+                </Grid>
+
+                <Button
+                    Grid.Row="5"
+                    Height="50"
+                    Margin="25"
+                    Background="Teal"
+                    BorderThickness="0"
+                    Content="Upload File"
+                    Foreground="White">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10" />
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </Grid>
+
+            <!--  main content  -->
+            <Grid Grid.Column="1" Background="#E1E4E6">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <!--  search box & create new button  -->
+                <Grid
+                    Height="100"
+                    Margin="40,0"
+                    VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="200" />
+                    </Grid.ColumnDefinitions>
+
+                    <Border
+                        Height="50"
+                        Background="WhiteSmoke"
+                        CornerRadius="10">
+                        <Grid VerticalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="50" />
+                            </Grid.ColumnDefinitions>
+
+                            <Path Data="{StaticResource search}" Style="{StaticResource {x:Type Path}}" />
+
+                            <TextBlock
+                                Grid.ColumnSpan="3"
+                                Padding="50,0"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                Foreground="Gray"
+                                Text="Search"
+                                TextAlignment="Left" />
+
+                            <Path
+                                Grid.Column="2"
+                                Data="{StaticResource mic}"
+                                Style="{StaticResource {x:Type Path}}" />
+                        </Grid>
+                    </Border>
+                    <Button
+                        Grid.Column="1"
+                        Height="50"
+                        Margin="25,0,0,0"
+                        Background="Teal"
+                        BorderThickness="0"
+                        Foreground="White">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10" />
+                            </Style>
+                        </Button.Resources>
+                        <Button.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Path
+                                    HorizontalAlignment="Center"
+                                    Data="{StaticResource plus}"
+                                    Fill="White"
+                                    Style="{StaticResource {x:Type Path}}" />
+                                <TextBlock
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="Create New" />
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                </Grid>
+
+                <StackPanel
+                    Grid.Row="1"
+                    Margin="40,0"
+                    Orientation="Vertical">
+                    <WrapPanel>
+                        <ccontrols:CardControl
+                            DriveName="Google Drive"
+                            ImageSource="/assets/googledrive.png"
+                            IsChecked="True"
+                            LastChange="Last Changes: 22.02.20" />
+                        <ccontrols:CardControl
+                            Margin="20,0"
+                            DriveName="Dropbox"
+                            ImageSource="/assets/dropbox.png"
+                            LastChange="Last Changes: 22.02.20" />
+                        <ccontrols:CardControl
+                            DriveName="OneDrive"
+                            ImageSource="/assets/onedrive.png"
+                            LastChange="Last Changes: 22.02.20" />
+                    </WrapPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
