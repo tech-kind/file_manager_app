@@ -9,13 +9,22 @@
 
   <ItemGroup>
     <None Remove="assets\1.png" />
+    <None Remove="assets\2.png" />
+    <None Remove="assets\3.jpg" />
+    <None Remove="assets\4.jpg" />
     <None Remove="assets\dropbox.png" />
     <None Remove="assets\googledrive.png" />
     <None Remove="assets\onedrive.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="assets\2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="assets\1.png" />
+    <Resource Include="assets\3.jpg" />
+    <Resource Include="assets\4.jpg" />
     <Resource Include="assets\dropbox.png" />
     <Resource Include="assets\googledrive.png" />
     <Resource Include="assets\onedrive.png" />

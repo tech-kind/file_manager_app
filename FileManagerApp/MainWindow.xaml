@@ -7,7 +7,7 @@
     xmlns:local="clr-namespace:FileManagerApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
-    Width="1250"
+    Width="1520"
     Height="841"
     Background="Transparent"
     FontSize="15"
@@ -332,6 +332,184 @@
                             DriveName="OneDrive"
                             ImageSource="/assets/onedrive.png"
                             LastChange="Last Changes: 22.02.20" />
+                    </WrapPanel>
+
+                    <Grid Margin="0,20">
+                        <TextBlock Foreground="Gray" Text="Co-owners" />
+                        <Button
+                            Width="30"
+                            HorizontalAlignment="Right"
+                            Background="Transparent">
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="5" />
+                                </Style>
+                            </Button.Resources>
+                            <Button.Content>
+                                <Path
+                                    Data="{StaticResource more}"
+                                    Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
+                                    Style="{StaticResource {x:Type Path}}" />
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+
+                    <Grid Height="50">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Rectangle
+                                Width="50"
+                                Height="50"
+                                HorizontalAlignment="Left"
+                                RadiusX="5"
+                                RadiusY="5">
+                                <Rectangle.Fill>
+                                    <ImageBrush ImageSource="/assets/1.png" Stretch="UniformToFill" />
+                                </Rectangle.Fill>
+                            </Rectangle>
+
+                            <TextBlock
+                                Grid.Column="1"
+                                Margin="10,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center">
+                                <Run FontWeight="Bold" Text="Oscar Gilbert" />
+                                <LineBreak />
+                                <Run
+                                    FontSize="12"
+                                    Foreground="Gray"
+                                    Text="Can Edit" />
+                            </TextBlock>
+                        </Grid>
+
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Rectangle
+                                Width="50"
+                                Height="50"
+                                HorizontalAlignment="Left"
+                                RadiusX="5"
+                                RadiusY="5">
+                                <Rectangle.Fill>
+                                    <ImageBrush ImageSource="/assets/2.png" Stretch="UniformToFill" />
+                                </Rectangle.Fill>
+                            </Rectangle>
+
+                            <TextBlock
+                                Grid.Column="1"
+                                Margin="10,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center">
+                                <Run FontWeight="Bold" Text="Amelia Evans" />
+                                <LineBreak />
+                                <Run
+                                    FontSize="12"
+                                    Foreground="Gray"
+                                    Text="Can View" />
+                            </TextBlock>
+                        </Grid>
+
+                        <Grid Grid.Column="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Rectangle
+                                Width="50"
+                                Height="50"
+                                HorizontalAlignment="Left"
+                                RadiusX="5"
+                                RadiusY="5">
+                                <Rectangle.Fill>
+                                    <ImageBrush ImageSource="/assets/3.jpg" Stretch="UniformToFill" />
+                                </Rectangle.Fill>
+                            </Rectangle>
+
+                            <TextBlock
+                                Grid.Column="1"
+                                Margin="10,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center">
+                                <Run FontWeight="Bold" Text="Thomas Fisher" />
+                                <LineBreak />
+                                <Run
+                                    FontSize="12"
+                                    Foreground="Gray"
+                                    Text="Can Edit" />
+                            </TextBlock>
+                        </Grid>
+
+                        <Grid Grid.Column="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Rectangle
+                                Width="50"
+                                Height="50"
+                                HorizontalAlignment="Left"
+                                RadiusX="5"
+                                RadiusY="5">
+                                <Rectangle.Fill>
+                                    <ImageBrush ImageSource="/assets/4.jpg" Stretch="UniformToFill" />
+                                </Rectangle.Fill>
+                            </Rectangle>
+
+                            <TextBlock
+                                Grid.Column="1"
+                                Margin="10,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center">
+                                <Run FontWeight="Bold" Text="Robert Wilson" />
+                                <LineBreak />
+                                <Run
+                                    FontSize="12"
+                                    Foreground="Gray"
+                                    Text="Can View" />
+                            </TextBlock>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Margin="0,20">
+                        <TextBlock Foreground="Gray" Text="Folders" />
+                        <Button
+                            Width="30"
+                            HorizontalAlignment="Right"
+                            Background="Transparent">
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="5" />
+                                </Style>
+                            </Button.Resources>
+                            <Button.Content>
+                                <Path
+                                    Data="{StaticResource more}"
+                                    Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
+                                    Style="{StaticResource {x:Type Path}}" />
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+
+                    <WrapPanel>
+                        <ccontrols:FolderControl FolderName="Dribbles" LastChange="Last Changes: 12.02.20" />
+                        <ccontrols:FolderControl
+                            Margin="20,0"
+                            FolderName="My Documents"
+                            LastChange="Last Changes: 12.02.20" />
+                        <ccontrols:FolderControl FolderName="Databases" LastChange="Last Changes: 12.02.20" />
                     </WrapPanel>
                 </StackPanel>
             </Grid>
